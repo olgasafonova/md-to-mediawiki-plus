@@ -195,6 +195,16 @@ func ConvertHeaders(text string) string {
 
 // ConvertBoldItalic converts bold and italic formatting
 func ConvertBoldItalic(text string) string {
+	// Protect code blocks from processing by temporarily replacing them
+	codeBlockRegex := regexp.MustCompile(`(?s)<syntaxhighlight[^>]*>.*?</syntaxhighlight>`)
+	codeBlocks := codeBlockRegex.FindAllString(text, -1)
+
+	// Replace code blocks with placeholders (use base64-like format to avoid special chars)
+	for i, block := range codeBlocks {
+		placeholder := fmt.Sprintf("XYZCODEBLOCKREPLACEMENTXYZ%dXYZ", i)
+		text = strings.Replace(text, block, placeholder, 1)
+	}
+
 	// Obsidian highlights: ==text== -> <mark style="background-color:#f5ff56">text</mark>
 	highlightRegex := regexp.MustCompile(`==([^=\n]+)==`)
 	text = highlightRegex.ReplaceAllString(text, `<mark style="background-color:#f5ff56">$1</mark>`)
@@ -211,6 +221,12 @@ func ConvertBoldItalic(text string) string {
 	text = italicRegex1.ReplaceAllString(text, `''$1''`)
 	italicRegex2 := regexp.MustCompile(`(?:^|[^_])_([^_\n]+?)_(?:[^_]|$)`)
 	text = italicRegex2.ReplaceAllString(text, `''$1''`)
+
+	// Restore code blocks
+	for i, block := range codeBlocks {
+		placeholder := fmt.Sprintf("XYZCODEBLOCKREPLACEMENTXYZ%dXYZ", i)
+		text = strings.Replace(text, placeholder, block, 1)
+	}
 
 	return text
 }
@@ -520,11 +536,12 @@ func Convert(markdownText string, config Config) string {
 	}
 
 	// Sequential processing (Concurrent mode disabled for stability)
+	// Process code blocks FIRST to protect underscores and other special characters
+	text = ConvertCode(text)
 	text = ConvertBoldItalic(text)
 	text = ConvertHeaders(text)
 	text = ConvertLinks(text)
 	text = ConvertCallouts(text)
-	text = ConvertCode(text)
 	text = ConvertLists(text)
 	text = ConvertTables(text)
 	text = ConvertHorizontalRules(text)
