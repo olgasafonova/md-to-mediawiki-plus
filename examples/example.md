@@ -150,10 +150,6 @@ Here's a comparison of file types:
 
 You can use ==highlighted text== to draw attention to important information. Regular **bold** and *italic* formatting is also supported.
 
-## Links
-
-For more information, see the [official documentation](https://docs.example.com) or visit our [[Internal Wiki]].
-
 ---
 
 This example demonstrates:
