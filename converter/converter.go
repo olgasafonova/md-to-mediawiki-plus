@@ -14,12 +14,12 @@ type Config struct {
 
 // Tietoevry brand colors
 var headingColors = map[int]string{
-	1: "#280071", // Hero Blue
-	2: "#5B2A86", // Deep Purple
-	3: "#7B4AA3", // Medium Purple
-	4: "#8B5AB3", // Light Purple
-	5: "#9B6AC3", // Lighter Purple
-	6: "#AB7AD3", // Lightest Purple
+	1: "#021e57", // Hero Blue
+	2: "#021e57", // Dark Navy Blue
+	3: "#021e57", // Dark Navy Blue
+	4: "#021e57", // Dark Navy Blue
+	5: "#021e57", // Dark Navy Blue
+	6: "#021e57", // Dark Navy Blue
 }
 
 // GetCodeStylingCSS generates MediaWiki CSS for accessible syntax highlighting
@@ -120,8 +120,8 @@ func GetCodeStylingCSS() string {
 
 /* Inline code styling */
 code {
-    background-color: #f8f7f7 !important;
-    color: #071d49 !important;
+    background-color: #f5ff56 !important;
+    color: #021e57 !important;
     padding: 2px 6px !important;
     border-radius: 3px !important;
     font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
@@ -130,39 +130,39 @@ code {
 /* Tietoevry Heading Colors - Purple gradient */
 .mw-parser-output h1,
 h1.firstHeading {
-    color: #280071 !important;  /* Hero Blue */
-    border-bottom: 2px solid #280071 !important;
+    color: #021e57 !important;  /* Hero Blue */
+    border-bottom: 2px solid #021e57 !important;
     font-weight: 600 !important;
 }
 
 .mw-parser-output h2,
 h2 {
-    color: #5B2A86 !important;  /* Deep Purple */
-    border-bottom: 1px solid #b1b5ce !important;
+    color: #021e57 !important;  /* Dark Navy Blue */
+    border-bottom: 1px solid #021e57 !important;
     font-weight: 600 !important;
 }
 
 .mw-parser-output h3,
 h3 {
-    color: #7B4AA3 !important;  /* Medium Purple */
+    color: #021e57 !important;  /* Dark Navy Blue */
     font-weight: 600 !important;
 }
 
 .mw-parser-output h4,
 h4 {
-    color: #8B5AB3 !important;  /* Light Purple */
+    color: #021e57 !important;  /* Dark Navy Blue */
     font-weight: 600 !important;
 }
 
 .mw-parser-output h5,
 h5 {
-    color: #9B6AC3 !important;  /* Lighter Purple */
+    color: #021e57 !important;  /* Dark Navy Blue */
     font-weight: 600 !important;
 }
 
 .mw-parser-output h6,
 h6 {
-    color: #AB7AD3 !important;  /* Lightest Purple */
+    color: #021e57 !important;  /* Dark Navy Blue */
     font-weight: 600 !important;
 }
 </style>
@@ -195,9 +195,9 @@ func ConvertHeaders(text string) string {
 
 // ConvertBoldItalic converts bold and italic formatting
 func ConvertBoldItalic(text string) string {
-	// Obsidian highlights: ==text== -> <mark style="background-color:#eacbbb">text</mark>
+	// Obsidian highlights: ==text== -> <mark style="background-color:#f5ff56">text</mark>
 	highlightRegex := regexp.MustCompile(`==([^=\n]+)==`)
-	text = highlightRegex.ReplaceAllString(text, `<mark style="background-color:#eacbbb">$1</mark>`)
+	text = highlightRegex.ReplaceAllString(text, `<mark style="background-color:#f5ff56">$1</mark>`)
 
 	// Bold: **text** or __text__ -> '''text'''
 	boldRegex1 := regexp.MustCompile(`\*\*(.+?)\*\*`)
@@ -228,31 +228,31 @@ func ConvertLinks(text string) string {
 func ConvertCallouts(text string) string {
 	// Info boxes - using Tietoevry cool palette
 	infoRegex := regexp.MustCompile(`(?m)>\s*\[!info\]\s*(.*)$`)
-	text = infoRegex.ReplaceAllString(text, `{| class="wikitable" style="border-left:4px solid #280071; background-color:#f7f7fa;"
+	text = infoRegex.ReplaceAllString(text, `{| class="wikitable" style="border-left:4px solid #021e57; background-color:#f7f7fa;"
 | <div style="padding:0.5em;">
-<strong style="color:#280071;">ℹ️ Info:</strong> $1
+<strong style="color:#021e57;">ℹ️ Info:</strong> $1
 </div>
 |}`)
 
 	// Warning boxes - using Tietoevry warm palette
 	warningRegex := regexp.MustCompile(`(?m)>\s*\[!warning\]\s*(.*)$`)
-	text = warningRegex.ReplaceAllString(text, `{| class="wikitable" style="border-left:4px solid #f9423a; background-color:#fdfaf8;"
+	text = warningRegex.ReplaceAllString(text, `{| class="wikitable" style="border-left:4px solid #f5ff56; background-color:#fdfaf8;"
 | <div style="padding:0.5em;">
-<strong style="color:#f9423a;">⚠️ Warning:</strong> $1
+<strong style="color:#f5ff56;">⚠️ Warning:</strong> $1
 </div>
 |}`)
 
 	// Success boxes
 	successRegex := regexp.MustCompile(`(?m)>\s*\[!success\]\s*(.*)$`)
-	text = successRegex.ReplaceAllString(text, `{| class="wikitable" style="border-left:4px solid #26d07c; background-color:#f7f7fa;"
+	text = successRegex.ReplaceAllString(text, `{| class="wikitable" style="border-left:4px solid #4e60e7; background-color:#f7f7fa;"
 | <div style="padding:0.5em;">
-<strong style="color:#26d07c;">✓ Success:</strong> $1
+<strong style="color:#4e60e7;">✓ Success:</strong> $1
 </div>
 |}`)
 
 	// Note boxes
 	noteRegex := regexp.MustCompile(`(?m)>\s*\[!note\]\s*(.*)$`)
-	text = noteRegex.ReplaceAllString(text, `{| class="wikitable" style="border-left:4px solid #b1b5ce; background-color:#f7f7fa;"
+	text = noteRegex.ReplaceAllString(text, `{| class="wikitable" style="border-left:4px solid #839df9; background-color:#f7f7fa;"
 | <div style="padding:0.5em;">
 <strong style="color:#071d49;">📝 Note:</strong> $1
 </div>
@@ -287,10 +287,10 @@ func ConvertCode(text string) string {
 		return fmt.Sprintf("<syntaxhighlight lang=\"%s\" line>\n%s\n</syntaxhighlight>", lang, code)
 	})
 
-	// Inline code: `code` -> <code style="background-color:#eacbbb;color:#280071;">code</code>
-	// Peach background with Hero Blue text (Tietoevry branding)
+	// Inline code: `code` -> <code style="background-color:#f5ff56;color:#021e57;">code</code>
+	// Yellow background with Hero Blue text (Tietoevry branding)
 	inlineCodeRegex := regexp.MustCompile("`([^`\n]+)`")
-	text = inlineCodeRegex.ReplaceAllString(text, `<code style="background-color:#eacbbb;color:#280071;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">$1</code>`)
+	text = inlineCodeRegex.ReplaceAllString(text, `<code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">$1</code>`)
 
 	return text
 }
@@ -334,7 +334,7 @@ func AddHighlights(text string) string {
 
 		// Check if it looks like an API endpoint (has a slash and CamelCase)
 		if strings.Contains(endpoint, "/") && regexp.MustCompile(`[A-Z]`).MatchString(endpoint) {
-			return fmt.Sprintf(`<mark style="background-color:#eacbbb"><code>%s</code></mark>`, endpoint)
+			return fmt.Sprintf(`<mark style="background-color:#f5ff56"><code>%s</code></mark>`, endpoint)
 		}
 		return match
 	})
@@ -497,6 +497,18 @@ func PrettifyCheckmarks(text string) string {
 	return strings.ReplaceAll(text, "✓", "✅")
 }
 
+// ConvertHorizontalRules converts Markdown horizontal rules to MediaWiki format
+func ConvertHorizontalRules(text string) string {
+	// Markdown horizontal rules: ---, ***, or ___
+	// MediaWiki horizontal rules: ----
+
+	// Match lines with 3 or more dashes, asterisks, or underscores
+	hrRegex := regexp.MustCompile(`(?m)^[\s]*[-*_]{3,}[\s]*$`)
+	text = hrRegex.ReplaceAllString(text, "----")
+
+	return text
+}
+
 // Convert performs the main conversion with optional concurrent processing
 func Convert(markdownText string, config Config) string {
 	text := markdownText
@@ -515,6 +527,7 @@ func Convert(markdownText string, config Config) string {
 	text = ConvertCode(text)
 	text = ConvertLists(text)
 	text = ConvertTables(text)
+	text = ConvertHorizontalRules(text)
 	text = AddHighlights(text)
 
 	// Post-processing improvements

@@ -7,13 +7,17 @@ This is an enhanced version of the original converter, featuring significant rel
 ## Features
 
 - **🎨 Tietoevry Branding**:
-    - Purple gradient headings (Hero Blue → Light Purple)
-    - Peach + Hero Blue inline code styling
+    - Hero Blue headings (#021e57)
+    - Yellow + Hero Blue inline code styling
     - WCAG AA compliant colors
 - **🔄 Smart Changelog**: Automatically reverses changelog order (Newest First) with robust parsing logic.
 - **✅ Accessibility**: Green emoji checkmarks and accessible syntax highlighting.
 - **🛡️ Reliable**: Fully tested codebase with unit tests and CI integration.
 - **⚡ Fast**: High-performance Go implementation.
+
+## Output Format
+
+**Important:** Always output as `.txt` files (not `.wiki`) and save outside the Obsidian vault directory.
 
 ## Installation
 
@@ -31,7 +35,8 @@ make build
 ## Usage
 
 ```bash
-./md-to-mediawiki-plus -i input.md -o output.wiki
+# Always use .txt extension and save outside Obsidian vault
+./md-to-mediawiki-plus -i input.md -o ~/output.txt --with-css
 ```
 
 ### Options
