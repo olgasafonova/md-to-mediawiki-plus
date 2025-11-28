@@ -1,69 +1,110 @@
 # Markdown to MediaWiki Plus
 
-A robust, enterprise-grade Markdown to MediaWiki converter with Tieto branding and accessibility-first design.
+Convert Markdown documents to MediaWiki format with Tieto branding.
 
-This is an enhanced version of the original converter, featuring significant reliability improvements, bug fixes, and a comprehensive test suite.
+## What This Does
 
-## Features
+This tool transforms your Markdown files into MediaWiki wiki markup, automatically applying:
+- Tieto brand colors (Hero Blue #021e57 for headings)
+- Accessible color contrast (WCAG AA compliant)
+- Smart changelog formatting (newest entries first)
+- Styled code blocks with yellow and blue accents
 
-- **🎨 Tieto Branding**:
-    - Hero Blue headings (#021e57)
-    - Yellow + Hero Blue inline code styling
-    - WCAG AA compliant colors
-- **🔄 Smart Changelog**: Automatically reverses changelog order (Newest First) with robust parsing logic.
-- **✅ Accessibility**: Green emoji checkmarks and accessible syntax highlighting.
-- **🛡️ Reliable**: Fully tested codebase with unit tests and CI integration.
-- **⚡ Fast**: High-performance Go implementation.
-
-## Output Format
-
-**Important:** Always output as `.txt` files (not `.wiki`) and save outside the Obsidian vault directory.
-
-## Installation
-
-### Prerequisites
-- Go 1.21 or later
-
-### Build from Source
+## Quick Start
 
 ```bash
+# Build the tool
 git clone https://github.com/olgasafonova/md-to-mediawiki-plus.git
 cd md-to-mediawiki-plus
 make build
+
+# Convert a file
+./md-to-mediawiki-plus -i input.md -o output.txt --with-css
 ```
+
+Copy the contents of `output.txt` and paste into your MediaWiki editor.
+
+## Important Requirements
+
+**File Output:**
+- Always save output as `.txt` files (not `.wiki`)
+- Save output files outside your Obsidian vault directory
+
+**System Requirements:**
+- Go 1.21 or later
 
 ## Usage
 
+### Basic Conversion
+
 ```bash
-# Always use .txt extension and save outside Obsidian vault
-./md-to-mediawiki-plus -i input.md -o ~/output.txt --with-css
+./md-to-mediawiki-plus -i input.md -o ~/Documents/output.txt
 ```
 
-### Options
+### With CSS Styling
 
-- `-i, --input`: Input Markdown file (required)
-- `-o, --output`: Output MediaWiki file (default: stdout)
-- `--with-css`: Include CSS styling in output
-- `-c, --concurrent`: Enable concurrent processing (currently runs sequentially for stability)
-- `-v, --version`: Show version
-- `-h, --help`: Show help
+```bash
+./md-to-mediawiki-plus -i input.md -o ~/Documents/output.txt --with-css
+```
 
-## Development
+### Command Options
 
-This project includes a full development environment setup.
+| Option | Description |
+|--------|-------------|
+| `-i, --input` | Input Markdown file (required) |
+| `-o, --output` | Output file path (default: prints to screen) |
+| `--with-css` | Include CSS styling for colors and formatting |
+| `-v, --version` | Show version |
+| `-h, --help` | Show help |
+
+## What Gets Converted
+
+### Headings
+Markdown headings become MediaWiki headings with Hero Blue color applied.
+
+### Code Blocks
+Inline `code` gets yellow background with Hero Blue text. Code blocks use syntax highlighting.
+
+### Changelogs
+If your Markdown contains a changelog, entries are automatically reversed to show newest first.
+
+### Lists and Formatting
+Standard Markdown lists, bold, italic, and links convert to their MediaWiki equivalents.
+
+## Examples
+
+See the `examples/` directory for sample input and output files.
+
+## Troubleshooting
+
+**Problem:** Output file won't save
+- **Solution:** Make sure you're saving outside your Obsidian vault and using `.txt` extension
+
+**Problem:** Colors don't appear in wiki
+- **Solution:** Use the `--with-css` flag and ensure your MediaWiki instance allows inline styles
+
+**Problem:** Build fails
+- **Solution:** Verify you have Go 1.21+ installed: `go version`
+
+## For Developers
 
 ### Running Tests
 ```bash
 make test
 ```
 
-### Linting
+### Code Quality
 ```bash
 make lint
 ```
 
 ### CI/CD
-Includes GitHub Actions workflow for automated testing and building.
+The project includes GitHub Actions for automated testing and builds.
 
 ## License
+
 MIT
+
+---
+
+**Version History:** See `CHANGELOG.md` for release notes and version history.
