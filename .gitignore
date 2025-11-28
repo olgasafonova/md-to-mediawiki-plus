@@ -8,6 +8,8 @@ md-to-mediawiki-plus
 # Output files
 *.wiki
 *.txt
+# But allow example outputs
+!examples/*.txt
 
 # OS specific
 .DS_Store

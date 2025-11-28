@@ -1,0 +1,728 @@
+<!-- Accessible Syntax Highlighting (WCAG AA compliant) -->
+<style>
+/* Code block container */
+.mw-highlight {
+    background-color: #FAFAFA !important;
+    border: 1px solid #CCCCCC !important;
+    border-left: 3px solid #0000FF !important;
+    padding: 1em !important;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
+    font-size: 0.95em !important;
+    line-height: 1.5 !important;
+}
+
+/* Syntax highlighting - Industry standard accessible colors */
+.mw-highlight .c,   /* Comments */
+.mw-highlight .cm,  /* Multi-line comments */
+.mw-highlight .c1 { /* Single-line comments */
+    color: #A0A1A7 !important;
+    font-style: italic !important;
+}
+
+.mw-highlight .k,   /* Keywords */
+.mw-highlight .kd,  /* Keyword declarations */
+.mw-highlight .kn,  /* Keyword namespace */
+.mw-highlight .kp,  /* Keyword pseudo */
+.mw-highlight .kr,  /* Keyword reserved */
+.mw-highlight .kt { /* Keyword type */
+    color: #0000FF !important;
+    font-weight: 600 !important;
+}
+
+.mw-highlight .s,   /* Strings */
+.mw-highlight .s1,  /* Single-quoted strings */
+.mw-highlight .s2,  /* Double-quoted strings */
+.mw-highlight .sb,  /* String backtick */
+.mw-highlight .sc { /* String char */
+    color: #50A14F !important;
+}
+
+.mw-highlight .m,   /* Numbers */
+.mw-highlight .mf,  /* Float */
+.mw-highlight .mi,  /* Integer */
+.mw-highlight .mo,  /* Octal */
+.mw-highlight .mh { /* Hex */
+    color: #A626A4 !important;
+}
+
+.mw-highlight .n,   /* Names/variables */
+.mw-highlight .nv { /* Variable */
+    color: #383A42 !important;
+}
+
+.mw-highlight .nf,  /* Function name */
+.mw-highlight .fm { /* Function magic */
+    color: #4078F2 !important;
+    font-weight: 500 !important;
+}
+
+.mw-highlight .o,   /* Operators */
+.mw-highlight .ow { /* Operator word */
+    color: #383A42 !important;
+}
+
+/* XML/JSON specific */
+.mw-highlight .nt { /* XML/HTML tags */
+    color: #E45649 !important;
+    font-weight: 600 !important;
+}
+
+.mw-highlight .na { /* XML/HTML attributes */
+    color: #986801 !important;
+}
+
+.mw-highlight .p { /* Punctuation */
+    color: #383A42 !important;
+}
+
+/* Line numbers */
+.mw-highlight .linenos {
+    background-color: #F0F0F0 !important;
+    color: #9D9D9F !important;
+    padding-right: 1em !important;
+    padding-left: 0.5em !important;
+    border-right: 1px solid #CCCCCC !important;
+    user-select: none !important;
+}
+
+/* Boolean/Null/Constants */
+.mw-highlight .kc,  /* Constant */
+.mw-highlight .bp { /* Builtin pseudo */
+    color: #A626A4 !important;
+}
+
+/* Inline code styling */
+code {
+    background-color: #f5ff56 !important;
+    color: #021e57 !important;
+    padding: 2px 6px !important;
+    border-radius: 3px !important;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
+}
+
+/* Tieto Heading Colors */
+.mw-parser-output h1,
+h1.firstHeading {
+    color: #021e57 !important;  /* Hero Blue */
+    border-bottom: 2px solid #021e57 !important;
+    font-weight: 600 !important;
+}
+
+.mw-parser-output h2,
+h2 {
+    color: #021e57 !important;  /* Dark Navy Blue */
+    border-bottom: 1px solid #021e57 !important;
+    font-weight: 600 !important;
+}
+
+.mw-parser-output h3,
+h3 {
+    color: #021e57 !important;  /* Dark Navy Blue */
+    font-weight: 600 !important;
+}
+
+.mw-parser-output h4,
+h4 {
+    color: #021e57 !important;  /* Dark Navy Blue */
+    font-weight: 600 !important;
+}
+
+.mw-parser-output h5,
+h5 {
+    color: #021e57 !important;  /* Dark Navy Blue */
+    font-weight: 600 !important;
+}
+
+.mw-parser-output h6,
+h6 {
+    color: #021e57 !important;  /* Dark Navy Blue */
+    font-weight: 600 !important;
+}
+</style>
+
+
+
+=<span style="color:#021e57;">Comprehensive Example: All Markdown Features</span>=
+
+This example demonstrates every feature supported by the md-to-mediawiki-plus converter.
+
+==<span style="color:#021e57;">Heading Level 2</span>==
+
+===<span style="color:#021e57;">Heading Level 3</span>===
+
+====<span style="color:#021e57;">Heading Level 4</span>====
+
+=====<span style="color:#021e57;">Heading Level 5</span>=====
+
+======<span style="color:#021e57;">Heading Level 6</span>======
+----
+==<span style="color:#021e57;">Inline Code Examples</span>==
+
+Use <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">inline code</code> with special highlighting. API methods like <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">DocumentService/CreateDocument</code> and <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">FileService/GetFile</code> are highlighted with Tieto branding.
+
+Variables like <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">API_TOKEN</code>, <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">fileId</code>, and <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">connectionString</code> get <mark style="background-color:#f5ff56">yellow background with navy text</mark>.
+----
+==<span style="color:#021e57;">Code Blocks with Syntax Highlighting</span>==
+
+===<span style="color:#021e57;">JSON Example</span>===
+
+<syntaxhighlight lang="json" line>
+{
+  "apiVersion": "v1",
+  "kind": "Configuration",
+  "metadata": {
+    "name": "autosaver-config",
+    "namespace": "production",
+    "labels": {
+      "environment": "prod",
+      "app": "autosaver"
+    }
+  },
+  "data": {
+    "endpoint": "https://api.example.com/v1",
+    "timeout": 30000,
+    "retryAttempts": 3,
+    "enableLogging": true
+  }
+}
+</syntaxhighlight>
+
+===<span style="color:#021e57;">XML Example</span>===
+
+<syntaxhighlight lang="xml" line>
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <!-- AutoSaver Schema Configuration -->
+  <schema type="document" version="2.0">
+    <mapping>
+      <field source="title" target="CreateDocumentParameter.Title" required="true"/>
+      <field source="description" target="CreateDocumentParameter.Description"/>
+      <field source="category" target="DocumentCategory" default="INN"/>
+    </mapping>
+    <validation>
+      <rule field="title" minLength="3" maxLength="255"/>
+      <rule field="documentDate" format="yyyy-MM-dd"/>
+    </validation>
+    <defaults>
+      <value key="DocumentArchive">SAKSDOK</value>
+      <value key="Status">F</value>
+    </defaults>
+  </schema>
+</configuration>
+</syntaxhighlight>
+
+===<span style="color:#021e57;">C# Example</span>===
+
+<syntaxhighlight lang="csharp" line>
+using System;
+using System.Threading.Tasks;
+using Public360.Services;
+
+namespace AutoSaver.Integration
+{
+    /// <summary>
+    /// Handles document archiving from external systems
+    /// </summary>
+    public class DocumentArchiver : IArchiveService
+    {
+        private readonly ISifClient _client;
+        private readonly ILogger<DocumentArchiver> _logger;
+
+        public DocumentArchiver(ISifClient client, ILogger<DocumentArchiver> logger)
+        {
+            _client = client ?? throw new ArgumentNullException(nameof(client));
+            _logger = logger;
+        }
+
+        public async Task<ArchiveResult> ArchiveDocumentAsync(DocumentRequest request)
+        {
+            try
+            {
+                // Validate request
+                if (string.IsNullOrEmpty(request.Title))
+                    throw new ValidationException("Title is required");
+
+                // Create document
+                var documentId = await _client.CreateDocumentAsync(new CreateDocumentParameter
+                {
+                    Title = request.Title,
+                    Description = request.Description,
+                    DocumentDate = DateTime.Now,
+                    Category = request.Category ?? "INN",
+                    Archive = "SAKSDOK"
+                });
+
+                _logger.LogInformation("Document created: {DocumentId}", documentId);
+
+                return new ArchiveResult { Success = true, DocumentId = documentId };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to archive document");
+                return new ArchiveResult { Success = false, Error = ex.Message };
+            }
+        }
+    }
+}
+</syntaxhighlight>
+
+===<span style="color:#021e57;">Go Example</span>===
+
+<syntaxhighlight lang="go" line>
+package autosaver
+
+import (
+    "context"
+    "encoding/json"
+    "fmt"
+    "time"
+)
+
+// SchemaMapper handles mapping between external schemas and P360 parameters
+type SchemaMapper struct {
+    config *Configuration
+    logger Logger
+}
+
+// DocumentMapping represents field mappings for document creation
+type DocumentMapping struct {
+    SourceField  string <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">json:"sourceField"</code>
+    TargetField  string <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">json:"targetField"</code>
+    Required     bool   <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">json:"required"</code>
+    DefaultValue string <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">json:"defaultValue,omitempty"</code>
+}
+
+// MapDocument converts external document format to P360 parameters
+func (m *SchemaMapper) MapDocument(ctx context.Context, input map[string]interface{}) (*CreateDocumentParams, error) {
+    params := &CreateDocumentParams{
+        CreatedDate: time.Now(),
+        Archive:     "SAKSDOK",
+    }
+
+    // Map title (required field)
+    if title, ok := input["title"].(string); ok && title != "" {
+        params.Title = title
+    } else {
+        return nil, fmt.Errorf("title is required")
+    }
+
+    // Map optional fields
+    if desc, ok := input["description"].(string); ok {
+        params.Description = desc
+    }
+
+    if category, ok := input["category"].(string); ok {
+        params.Category = category
+    } else {
+        params.Category = "INN" // default
+    }
+
+    m.logger.Info("Document mapped successfully", "title", params.Title)
+
+    return params, nil
+}
+</syntaxhighlight>
+
+===<span style="color:#021e57;">TypeScript Example</span>===
+
+<syntaxhighlight lang="typescript" line>
+import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import axios, { AxiosInstance } from 'axios';
+
+/**
+* Service for interacting with P360 SIF API
+ */
+@Injectable()
+export class SifApiService {
+  private readonly client: AxiosInstance;
+  private readonly baseUrl: string;
+
+  constructor(private configService: ConfigService) {
+    this.baseUrl = this.configService.get<string>('P360_API_URL');
+
+    this.client = axios.create({
+      baseURL: this.baseUrl,
+      timeout: 30000,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    });
+
+    // Add authentication interceptor
+    this.client.interceptors.request.use(async (config) => {
+      const token = await this.getAuthToken();
+      config.headers.Authorization = <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">Bearer ${token}</code>;
+      return config;
+    });
+  }
+
+  async createDocument(params: CreateDocumentParams): Promise<DocumentResult> {
+    try {
+      const response = await this.client.post<DocumentResponse>(
+        '/DocumentService/CreateDocument',
+        {
+          Title: params.title,
+          Description: params.description,
+          DocumentDate: params.documentDate.toISOString(),
+          Category: params.category || 'INN',
+          Archive: params.archive || 'SAKSDOK',
+          Status: 'F'
+        }
+      );
+
+      return {
+        success: true,
+        documentId: response.data.DocumentId,
+        recno: response.data.Recno
+      };
+    } catch (error) {
+      console.error('Failed to create document:', error);
+      throw new Error(<code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">Document creation failed: ${error.message}</code>);
+    }
+  }
+
+  private async getAuthToken(): Promise<string> {
+    // Token acquisition logic
+    return this.configService.get<string>('P360_API_TOKEN');
+  }
+}
+
+interface CreateDocumentParams {
+  title: string;
+  description?: string;
+  documentDate: Date;
+  category?: string;
+  archive?: string;
+}
+
+interface DocumentResult {
+  success: boolean;
+  documentId?: number;
+  recno?: number;
+  error?: string;
+}
+</syntaxhighlight>
+----
+==<span style="color:#021e57;">Tables</span>==
+
+===<span style="color:#021e57;">File Format Support</span>===
+
+{| class="wikitable"
+|-
+! Format
+! Extension
+! MIME Type
+! Max Size
+! Supported
+|-
+| PDF
+| .pdf
+| application/pdf
+| 100 MB
+| ✅ Yes
+|-
+| Word
+| .docx
+| application/vnd.openxmlformats-officedocument.wordprocessingml.document
+| 50 MB
+| ✅ Yes
+|-
+| Excel
+| .xlsx
+| application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+| 25 MB
+| ✅ Yes
+|-
+| PNG
+| .png
+| image/png
+| 10 MB
+| ✅ Yes
+|-
+| JPEG
+| .jpg, .jpeg
+| image/jpeg
+| 10 MB
+| ✅ Yes
+|-
+| ZIP
+| .zip
+| application/zip
+| 200 MB
+| ✅ Yes
+|-
+| CSV
+| .csv
+| text/csv
+| 5 MB
+| ✅ Yes
+|}
+
+===<span style="color:#021e57;">API Endpoints Comparison</span>===
+
+{| class="wikitable"
+|-
+! Endpoint
+! Method
+! Authentication
+! Rate Limit
+|-
+| <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">/DocumentService/CreateDocument</code>
+| POST
+| Required
+| 100/min
+|-
+| <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">/DocumentService/GetDocument</code>
+| GET
+| Required
+| 1000/min
+|-
+| <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">/FileService/UploadFile</code>
+| POST
+| Required
+| 50/min
+|-
+| <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">/FileService/GetFile</code>
+| GET
+| Required
+| 500/min
+|-
+| <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">/CaseService/CreateCase</code>
+| POST
+| Required
+| 100/min
+|}
+----
+==<span style="color:#021e57;">Lists and Nesting</span>==
+
+===<span style="color:#021e57;">Simple Bullet Points</span>===
+
+* First item
+* Second item
+* Third item
+* Fourth item
+
+===<span style="color:#021e57;">Simple Numbered List</span>===
+
+# First step
+# Second step
+# Third step
+# Fourth step
+
+===<span style="color:#021e57;">Nested Bullet Points</span>===
+
+* Main category 1
+** Subcategory 1.1
+** Subcategory 1.2
+*** Sub-subcategory 1.2.1
+*** Sub-subcategory 1.2.2
+** Subcategory 1.3
+* Main category 2
+** Subcategory 2.1
+*** Sub-subcategory 2.1.1
+**** Deep nesting 2.1.1.1
+**** Deep nesting 2.1.1.2
+*** Sub-subcategory 2.1.2
+** Subcategory 2.2
+* Main category 3
+
+===<span style="color:#021e57;">Nested Numbered Lists</span>===
+
+# First major step
+## Sub-step 1.1
+## Sub-step 1.2
+#### Detail 1.2.1
+#### Detail 1.2.2
+## Sub-step 1.3
+# Second major step
+## Sub-step 2.1
+#### Detail 2.1.1
+##### Fine detail 2.1.1.1
+##### Fine detail 2.1.1.2
+#### Detail 2.1.2
+## Sub-step 2.2
+# Third major step
+
+===<span style="color:#021e57;">Mixed Nested Lists (Bullets in Numbers)</span>===
+
+# Configure the system
+** Open admin panel
+** Navigate to settings
+*** Select "AutoSaver Configuration"
+*** Choose schema type
+** Save changes
+# Map the fields
+** Define source fields
+*** title
+*** description
+*** documentDate
+** Map to target parameters
+*** CreateDocumentParameter.Title
+*** CreateDocumentParameter.Description
+# Test the mapping
+** Use test data
+** Verify output
+** Check for errors
+
+===<span style="color:#021e57;">Mixed Nested Lists (Numbers in Bullets)</span>===
+
+* Development setup
+## Install prerequisites
+## Clone repository
+## Configure environment
+### Copy .env.example to .env
+### Set API credentials
+### Configure endpoints
+## Run tests
+* Production deployment
+## Build application
+## Run security scan
+### Check dependencies
+### Review code
+## Deploy to server
+## Monitor logs
+* Maintenance tasks
+----
+==<span style="color:#021e57;">Highlighted Text and Inline Styling</span>==
+
+Regular text with <mark style="background-color:#f5ff56">highlighted yellow background</mark> and <mark style="background-color:#f5ff56">navy text color</mark>.
+
+Important: Use the <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">--with-css</code> flag to enable <mark style="background-color:#f5ff56">inline code styling</mark>.
+
+API tokens like <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">ABC123XYZ</code> should be stored securely.
+
+Configuration values such as <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">timeout: 30000</code> and <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">maxRetries: 3</code> can be customized.
+----
+==<span style="color:#021e57;">Dividers</span>==
+
+Use three hyphens for a divider:
+----
+And they create clear visual separation between sections.
+----
+==<span style="color:#021e57;">Icons and Callouts</span>==
+
+{| class="wikitable" style="border-left:4px solid #021e57; background-color:#f7f7fa;"
+| <div style="padding:0.5em;">
+<strong style="color:#021e57;">ℹ️ Info:</strong> Information
+</div>
+|}
+> This is an informational callout with an info icon.
+
+{| class="wikitable" style="border-left:4px solid #f5ff56; background-color:#fdfaf8;"
+| <div style="padding:0.5em;">
+<strong style="color:#f5ff56;">⚠️ Warning:</strong> Warning
+</div>
+|}
+> This is a warning callout. Rate limits apply to all API endpoints.
+
+{| class="wikitable" style="border-left:4px solid #4e60e7; background-color:#f7f7fa;"
+| <div style="padding:0.5em;">
+<strong style="color:#4e60e7;">✅ Success:</strong> Success
+</div>
+|}
+> Document archived successfully with ID: 12345
+
+{| class="wikitable" style="border-left:4px solid #839df9; background-color:#f7f7fa;"
+| <div style="padding:0.5em;">
+<strong style="color:#071d49;">📝 Note:</strong> Note
+</div>
+|}
+> All dates should be in ISO 8601 format: <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">2024-01-15T10:30:00Z</code>
+
+> [!tip] Pro Tip
+> Use schema export functionality to reuse configurations across environments.
+----
+==<span style="color:#021e57;">Text Formatting</span>==
+
+'''Bold text''' for emphasis.
+''Italic text''for subtle emphasis.
+
+''''Bold and italic'''''for strong emphasis.
+
+~~Strikethrough~~ for deprecated features.
+
+Regular text with <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">inline code</code> and more regular text.
+
+Combine '''bold with <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">code</code>''' and''italic with <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">code</code>''
+----
+==<span style="color:#021e57;">Links</span>==
+
+External link: [https://www.tieto.com/p360 Public 360 Documentation]
+
+Internal reference: See [Heading Level 2](#heading-level-2) section.
+
+URL directly: https://www.example.com
+
+Email: support@example.com
+----
+==<span style="color:#021e57;">Complex Nested Example</span>==
+
+This shows all nesting patterns in one structure:
+
+# '''AutoSaver Setup'''
+** Prerequisites
+*** Go 1.21+
+*** P360 instance
+*** SIF API access
+** Installation steps
+### Download binary
+### Configure settings
+***** Set <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">endpoint</code> to your API URL
+***** Add authentication token
+***** Configure schema mapping
+###### Define source format (XML or JSON)
+###### Map fields to P360 parameters
+******** title → <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">CreateDocumentParameter.Title</code>
+******** date → <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">CreateDocumentParameter.DocumentDate</code>
+###### Set default values
+***** Test connection
+### Start service
+** Verification
+*** Check logs for errors
+*** Test with sample document
+#### Create test JSON file
+#### Submit via API
+#### Verify in P360
+****** Check document created
+****** Verify metadata
+****** Confirm file attachment
+
+# '''Production Deployment'''
+## Security configuration
+**** Enable TLS
+**** Configure firewalls
+***** Allow inbound on port 443
+***** Restrict source IPs
+**** Set up monitoring
+## Performance tuning
+**** Increase timeout values
+***** Connection timeout: <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">30s</code>
+***** Read timeout: <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">60s</code>
+**** Configure caching
+**** Enable compression
+## Backup procedures
+----
+==<span style="color:#021e57;">Summary</span>==
+
+This comprehensive example includes:
+
+* ✅ All heading levels (H1 through H6)
+* ✅ Code blocks with syntax highlighting (JSON, XML, C#, Go, TypeScript)
+* ✅ Inline code with styling
+* ✅ Tables with multiple columns
+* ✅ Simple bullet points
+* ✅ Simple numbered lists
+* ✅ Nested bullet points (multiple levels)
+* ✅ Nested numbered lists (multiple levels)
+* ✅ Mixed nesting (bullets in numbers, numbers in bullets)
+* ✅ Highlighted text with <mark style="background-color:#f5ff56">yellow background</mark>
+* ✅ Divider lines (---)
+* ✅ Icons and callout boxes
+* ✅ Text formatting (bold, italic, strikethrough)
+* ✅ Links (external, internal, URLs)
+* ✅ Complex nested structures combining all patterns
+----
+'''Note''': When using the converter, include the <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">--with-css</code> flag for full styling support.
