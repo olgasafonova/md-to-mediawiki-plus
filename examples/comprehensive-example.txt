@@ -632,7 +632,11 @@ And they create clear visual separation between sections.
 |}
 > All dates should be in ISO 8601 format: <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">2024-01-15T10:30:00Z</code>
 
-> [!tip] Pro Tip
+{| class="wikitable" style="border-left:4px solid #28a745; background-color:#f0f9f4;"
+| <div style="padding:0.5em;">
+<strong style="color:#155724;">💡 Pro Tip:</strong> Pro Tip
+</div>
+|}
 > Use schema export functionality to reuse configurations across environments.
 ----
 ==<span style="color:#021e57;">Text Formatting</span>==

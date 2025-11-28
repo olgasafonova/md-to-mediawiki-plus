@@ -274,6 +274,14 @@ func ConvertCallouts(text string) string {
 </div>
 |}`)
 
+	// Tip boxes
+	tipRegex := regexp.MustCompile(`(?m)>\s*\[!tip\]\s*(.*)$`)
+	text = tipRegex.ReplaceAllString(text, `{| class="wikitable" style="border-left:4px solid #28a745; background-color:#f0f9f4;"
+| <div style="padding:0.5em;">
+<strong style="color:#155724;">💡 Pro Tip:</strong> $1
+</div>
+|}`)
+
 	return text
 }
 
