@@ -250,11 +250,11 @@ func ConvertCallouts(text string) string {
 </div>
 |}`)
 
-	// Warning boxes - using Tieto warm palette
+	// Warning boxes - using Tieto warm palette with dark text for contrast
 	warningRegex := regexp.MustCompile(`(?m)>\s*\[!warning\]\s*(.*)$`)
-	text = warningRegex.ReplaceAllString(text, `{| class="wikitable" style="border-left:4px solid #f5ff56; background-color:#fdfaf8;"
+	text = warningRegex.ReplaceAllString(text, `{| class="wikitable" style="border-left:4px solid #f5a623; background-color:#fff8e1;"
 | <div style="padding:0.5em;">
-<strong style="color:#f5ff56;">⚠️ Warning:</strong> $1
+<strong style="color:#c87100;">⚠️ Warning:</strong> $1
 </div>
 |}`)
 
@@ -311,7 +311,13 @@ func ConvertCode(text string) string {
 	return text
 }
 
-// ConvertLists converts Markdown lists to MediaWiki format
+// listItem tracks list type at each indent level for mixed list handling
+type listItem struct {
+	indentLevel int
+	listType    string // "*" or "#"
+}
+
+// ConvertLists converts Markdown lists to MediaWiki format with proper nesting
 func ConvertLists(text string) string {
 	lines := strings.Split(text, "\n")
 	result := make([]string, 0, len(lines))
@@ -319,25 +325,82 @@ func ConvertLists(text string) string {
 	unorderedRegex := regexp.MustCompile(`^(\s*)[-\*]\s+(.*)$`)
 	orderedRegex := regexp.MustCompile(`^(\s*)\d+\.\s+(.*)$`)
 
+	// Track list type at each indent level for mixed lists
+	var listStack []listItem
+
 	for _, line := range lines {
-		// Unordered lists: - item or * item -> * item
+		// Check for unordered list
 		if matches := unorderedRegex.FindStringSubmatch(line); matches != nil {
 			indent := len(matches[1])
 			content := matches[2]
-			level := (indent / 2) + 1
-			line = strings.Repeat("*", level) + " " + content
+			currentLevel := (indent / 2)
+
+			// Build the prefix by tracking list types at each level
+			prefix := buildListPrefix(listStack, currentLevel, "*")
+			line = prefix + " " + content
+
+			// Update stack
+			listStack = updateListStack(listStack, currentLevel, "*")
+
 		} else if matches := orderedRegex.FindStringSubmatch(line); matches != nil {
-			// Ordered lists: 1. item -> # item
+			// Check for ordered list
 			indent := len(matches[1])
 			content := matches[2]
-			level := (indent / 2) + 1
-			line = strings.Repeat("#", level) + " " + content
+			currentLevel := (indent / 2)
+
+			// Build the prefix by tracking list types at each level
+			prefix := buildListPrefix(listStack, currentLevel, "#")
+			line = prefix + " " + content
+
+			// Update stack
+			listStack = updateListStack(listStack, currentLevel, "#")
+
+		} else {
+			// Not a list item, reset stack
+			listStack = nil
 		}
 
 		result = append(result, line)
 	}
 
 	return strings.Join(result, "\n")
+}
+
+// buildListPrefix creates the MediaWiki list prefix based on nesting context
+func buildListPrefix(stack []listItem, currentLevel int, currentType string) string {
+	prefix := ""
+
+	// Build prefix from stack up to current level
+	for i := 0; i <= currentLevel && i < len(stack); i++ {
+		prefix += stack[i].listType
+	}
+
+	// If we're deeper than the stack, add the current type
+	if currentLevel >= len(stack) {
+		prefix += currentType
+	}
+
+	return prefix
+}
+
+// updateListStack maintains the list nesting context
+func updateListStack(stack []listItem, currentLevel int, currentType string) []listItem {
+	// Trim stack to current level
+	if currentLevel < len(stack) {
+		stack = stack[:currentLevel]
+	}
+
+	// Add or update current level
+	if currentLevel < len(stack) {
+		stack[currentLevel].listType = currentType
+	} else {
+		stack = append(stack, listItem{
+			indentLevel: currentLevel,
+			listType:    currentType,
+		})
+	}
+
+	return stack
 }
 
 // AddHighlights adds highlighting markup for emphasized sections (Tieto branding for API endpoints)

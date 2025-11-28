@@ -534,13 +534,13 @@ interface DocumentResult {
 # First major step
 ## Sub-step 1.1
 ## Sub-step 1.2
-#### Detail 1.2.1
+### Detail 1.2.1
 #### Detail 1.2.2
 ## Sub-step 1.3
 # Second major step
 ## Sub-step 2.1
-#### Detail 2.1.1
-##### Fine detail 2.1.1.1
+### Detail 2.1.1
+#### Fine detail 2.1.1.1
 ##### Fine detail 2.1.1.2
 #### Detail 2.1.2
 ## Sub-step 2.2
@@ -549,41 +549,41 @@ interface DocumentResult {
 ===<span style="color:#021e57;">Mixed Nested Lists (Bullets in Numbers)</span>===
 
 # Configure the system
-** Open admin panel
-** Navigate to settings
-*** Select "AutoSaver Configuration"
-*** Choose schema type
-** Save changes
+#* Open admin panel
+#* Navigate to settings
+#** Select "AutoSaver Configuration"
+#** Choose schema type
+#* Save changes
 # Map the fields
-** Define source fields
-*** title
-*** description
-*** documentDate
-** Map to target parameters
-*** CreateDocumentParameter.Title
-*** CreateDocumentParameter.Description
+#* Define source fields
+#** title
+#** description
+#** documentDate
+#* Map to target parameters
+#** CreateDocumentParameter.Title
+#** CreateDocumentParameter.Description
 # Test the mapping
-** Use test data
-** Verify output
-** Check for errors
+#* Use test data
+#* Verify output
+#* Check for errors
 
 ===<span style="color:#021e57;">Mixed Nested Lists (Numbers in Bullets)</span>===
 
 * Development setup
-## Install prerequisites
-## Clone repository
-## Configure environment
-### Copy .env.example to .env
-### Set API credentials
-### Configure endpoints
-## Run tests
+*# Install prerequisites
+*# Clone repository
+*# Configure environment
+*## Copy .env.example to .env
+*## Set API credentials
+*## Configure endpoints
+*# Run tests
 * Production deployment
-## Build application
-## Run security scan
-### Check dependencies
-### Review code
-## Deploy to server
-## Monitor logs
+*# Build application
+*# Run security scan
+*## Check dependencies
+*## Review code
+*# Deploy to server
+*# Monitor logs
 * Maintenance tasks
 ----
 ==<span style="color:#021e57;">Highlighted Text and Inline Styling</span>==
@@ -611,9 +611,9 @@ And they create clear visual separation between sections.
 |}
 > This is an informational callout with an info icon.
 
-{| class="wikitable" style="border-left:4px solid #f5ff56; background-color:#fdfaf8;"
+{| class="wikitable" style="border-left:4px solid #f5a623; background-color:#fff8e1;"
 | <div style="padding:0.5em;">
-<strong style="color:#f5ff56;">⚠️ Warning:</strong> Warning
+<strong style="color:#c87100;">⚠️ Warning:</strong> Warning
 </div>
 |}
 > This is a warning callout. Rate limits apply to all API endpoints.
@@ -663,46 +663,46 @@ Email: support@example.com
 This shows all nesting patterns in one structure:
 
 # '''AutoSaver Setup'''
-** Prerequisites
-*** Go 1.21+
-*** P360 instance
-*** SIF API access
-** Installation steps
-### Download binary
-### Configure settings
-***** Set <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">endpoint</code> to your API URL
-***** Add authentication token
-***** Configure schema mapping
-###### Define source format (XML or JSON)
-###### Map fields to P360 parameters
-******** title → <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">CreateDocumentParameter.Title</code>
-******** date → <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">CreateDocumentParameter.DocumentDate</code>
-###### Set default values
-***** Test connection
-### Start service
-** Verification
-*** Check logs for errors
-*** Test with sample document
-#### Create test JSON file
-#### Submit via API
-#### Verify in P360
-****** Check document created
-****** Verify metadata
-****** Confirm file attachment
+#* Prerequisites
+#** Go 1.21+
+#** P360 instance
+#** SIF API access
+#* Installation steps
+#*# Download binary
+#*# Configure settings
+#*#* Set <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">endpoint</code> to your API URL
+#*#** Add authentication token
+#*#** Configure schema mapping
+#*#**# Define source format (XML or JSON)
+#*#**# Map fields to P360 parameters
+#*#**#* title → <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">CreateDocumentParameter.Title</code>
+#*#**#** date → <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">CreateDocumentParameter.DocumentDate</code>
+#*#**# Set default values
+#*#** Test connection
+#*# Start service
+#* Verification
+#** Check logs for errors
+#** Test with sample document
+#**# Create test JSON file
+#**# Submit via API
+#**# Verify in P360
+#**#* Check document created
+#**#** Verify metadata
+#**#** Confirm file attachment
 
 # '''Production Deployment'''
 ## Security configuration
-**** Enable TLS
-**** Configure firewalls
-***** Allow inbound on port 443
-***** Restrict source IPs
-**** Set up monitoring
+##* Enable TLS
+##** Configure firewalls
+##*** Allow inbound on port 443
+##*** Restrict source IPs
+##** Set up monitoring
 ## Performance tuning
-**** Increase timeout values
-***** Connection timeout: <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">30s</code>
-***** Read timeout: <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">60s</code>
-**** Configure caching
-**** Enable compression
+##* Increase timeout values
+##** Connection timeout: <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">30s</code>
+##*** Read timeout: <code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">60s</code>
+##** Configure caching
+##** Enable compression
 ## Backup procedures
 ----
 ==<span style="color:#021e57;">Summary</span>==
