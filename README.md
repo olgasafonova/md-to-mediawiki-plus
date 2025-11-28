@@ -1,12 +1,12 @@
 # Markdown to MediaWiki Plus
 
-A robust, enterprise-grade Markdown to MediaWiki converter with Tietoevry branding and accessibility-first design.
+A robust, enterprise-grade Markdown to MediaWiki converter with Tieto branding and accessibility-first design.
 
 This is an enhanced version of the original converter, featuring significant reliability improvements, bug fixes, and a comprehensive test suite.
 
 ## Features
 
-- **🎨 Tietoevry Branding**:
+- **🎨 Tieto Branding**:
     - Hero Blue headings (#021e57)
     - Yellow + Hero Blue inline code styling
     - WCAG AA compliant colors

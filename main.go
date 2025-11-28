@@ -34,7 +34,7 @@ func main() {
 	// Show version
 	if showVersion {
 		fmt.Printf("md-to-mediawiki-go version %s\n", version)
-		fmt.Println("Markdown to MediaWiki converter with Tietoevry branding")
+		fmt.Println("Markdown to MediaWiki converter with Tieto branding")
 		os.Exit(0)
 	}
 
@@ -98,7 +98,7 @@ func main() {
 
 func showUsage() {
 	fmt.Println("Markdown to MediaWiki Converter")
-	fmt.Println("Converts Obsidian-style Markdown to MediaWiki format with Tietoevry branding")
+	fmt.Println("Converts Obsidian-style Markdown to MediaWiki format with Tieto branding")
 	fmt.Println()
 	fmt.Println("Usage:")
 	fmt.Println("  md-to-mediawiki-go -i <input.md> [-o <output.txt>] [options]")
@@ -120,7 +120,7 @@ func showUsage() {
 	fmt.Println("  cat example.md | md-to-mediawiki-go -i - > output.txt")
 	fmt.Println()
 	fmt.Println("Features:")
-	fmt.Println("  ✅ Purple gradient headings (Tietoevry colors)")
+	fmt.Println("  ✅ Hero Blue headings (Tieto colors)")
 	fmt.Println("  ✅ Peach + Hero Blue inline code styling")
 	fmt.Println("  ✅ Reversed changelog (newest first)")
 	fmt.Println("  ✅ Green emoji checkmarks")

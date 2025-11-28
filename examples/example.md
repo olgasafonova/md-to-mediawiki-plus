@@ -130,7 +130,7 @@ Available methods include:
 
 ## Code Formatting
 
-Inline code like `const x = 42;` is also highlighted. API endpoints such as `DocumentService/CreateDocument` get special Tietoevry branding.
+Inline code like `const x = 42;` is also highlighted. API endpoints such as `DocumentService/CreateDocument` get special Tieto branding.
 
 ### Tables
 
@@ -158,7 +158,7 @@ For more information, see the [official documentation](https://docs.example.com)
 
 This example demonstrates:
 - Code syntax highlighting with accessible colors
-- Tietoevry-branded callout boxes
+- Tieto-branded callout boxes
 - API endpoint highlighting
 - Auto-detection of code languages
 - Table conversion

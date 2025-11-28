@@ -12,7 +12,7 @@ type Config struct {
 	Concurrent bool // Use concurrent processing for large files
 }
 
-// Tietoevry brand colors
+// Tieto brand colors
 var headingColors = map[int]string{
 	1: "#021e57", // Hero Blue
 	2: "#021e57", // Dark Navy Blue
@@ -127,7 +127,7 @@ code {
     font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
 }
 
-/* Tietoevry Heading Colors - Purple gradient */
+/* Tieto Heading Colors */
 .mw-parser-output h1,
 h1.firstHeading {
     color: #021e57 !important;  /* Hero Blue */
@@ -170,7 +170,7 @@ h6 {
 `
 }
 
-// ConvertHeaders converts Markdown headers to MediaWiki format with Tietoevry colors
+// ConvertHeaders converts Markdown headers to MediaWiki format with Tieto colors
 func ConvertHeaders(text string) string {
 	lines := strings.Split(text, "\n")
 	result := make([]string, 0, len(lines))
@@ -242,7 +242,7 @@ func ConvertLinks(text string) string {
 
 // ConvertCallouts converts markdown callouts to MediaWiki styled boxes
 func ConvertCallouts(text string) string {
-	// Info boxes - using Tietoevry cool palette
+	// Info boxes - using Tieto cool palette
 	infoRegex := regexp.MustCompile(`(?m)>\s*\[!info\]\s*(.*)$`)
 	text = infoRegex.ReplaceAllString(text, `{| class="wikitable" style="border-left:4px solid #021e57; background-color:#f7f7fa;"
 | <div style="padding:0.5em;">
@@ -250,7 +250,7 @@ func ConvertCallouts(text string) string {
 </div>
 |}`)
 
-	// Warning boxes - using Tietoevry warm palette
+	// Warning boxes - using Tieto warm palette
 	warningRegex := regexp.MustCompile(`(?m)>\s*\[!warning\]\s*(.*)$`)
 	text = warningRegex.ReplaceAllString(text, `{| class="wikitable" style="border-left:4px solid #f5ff56; background-color:#fdfaf8;"
 | <div style="padding:0.5em;">
@@ -304,7 +304,7 @@ func ConvertCode(text string) string {
 	})
 
 	// Inline code: `code` -> <code style="background-color:#f5ff56;color:#021e57;">code</code>
-	// Yellow background with Hero Blue text (Tietoevry branding)
+	// Yellow background with Hero Blue text (Tieto branding)
 	inlineCodeRegex := regexp.MustCompile("`([^`\n]+)`")
 	text = inlineCodeRegex.ReplaceAllString(text, `<code style="background-color:#f5ff56;color:#021e57;padding:2px 6px;border-radius:3px;font-family:Consolas,Monaco,monospace;">$1</code>`)
 
@@ -340,7 +340,7 @@ func ConvertLists(text string) string {
 	return strings.Join(result, "\n")
 }
 
-// AddHighlights adds highlighting markup for emphasized sections (Tietoevry branding for API endpoints)
+// AddHighlights adds highlighting markup for emphasized sections (Tieto branding for API endpoints)
 func AddHighlights(text string) string {
 	// Highlight API endpoints in code tags (e.g., Service/Method patterns)
 	codeRegex := regexp.MustCompile(`<code>([^<>]+)</code>`)
