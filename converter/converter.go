@@ -23,8 +23,10 @@ var headingColors = map[int]string{
 }
 
 // GetCodeStylingCSS generates MediaWiki CSS for accessible syntax highlighting
+// Wraps in hidden div to prevent MediaWiki from displaying the CSS as text
 func GetCodeStylingCSS() string {
-	return `<!-- Accessible Syntax Highlighting (WCAG AA compliant) -->
+	return `<div style="display:none;">
+<!-- Accessible Syntax Highlighting (WCAG AA compliant) -->
 <style>
 /* Code block container */
 .mw-highlight {
@@ -166,6 +168,7 @@ h6 {
     font-weight: 600 !important;
 }
 </style>
+</div>
 
 `
 }

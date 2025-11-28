@@ -1,12 +1,12 @@
 # Examples Directory
 
-This directory contains sample Markdown files and their converted MediaWiki outputs to demonstrate the converter's capabilities.
+This directory contains comprehensive sample files demonstrating all converter features.
 
 ## Files
 
-### comprehensive-example.md / comprehensive-example.txt
+### comprehensive-example.md
 
-**Purpose**: Demonstrates ALL converter features in one file
+**Purpose**: Complete reference showcasing ALL converter features
 
 **Includes**:
 - ✅ All heading levels (H1-H6) with Hero Blue styling
@@ -31,42 +31,24 @@ This directory contains sample Markdown files and their converted MediaWiki outp
 - ✅ Links (external, internal anchors, URLs, emails)
 - ✅ Complex nested structures
 
-**Use case**: Complete reference for all supported Markdown features
+**Use case**: Template for creating your own documentation with full feature support
 
 ---
 
-### example.md
+### comprehensive-example.txt
 
-**Purpose**: API documentation example with practical use cases
+**Purpose**: Pre-converted MediaWiki output of comprehensive-example.md
 
-**Includes**:
-- API endpoint documentation
-- JavaScript, Python, JSON, XML code examples
-- Callout boxes for important information
-- Tables comparing file types
-- Mixed formatting styles
-
-**Use case**: Real-world technical documentation scenario
-
----
-
-### release_notes_6.7.md
-
-**Purpose**: Large, complex document for stress testing
-
-**Includes**:
-- Multiple sections and subsections
-- DevOps story links
-- Extensive formatting
-- Real-world content structure
-
-**Use case**: Testing converter performance with large documents
+**Use case**:
+- Reference for expected converter output
+- Quick copy-paste to test MediaWiki rendering
+- Verify your conversion matches expected format
 
 ---
 
 ## How to Use
 
-### Convert an example:
+### Convert the example:
 
 ```bash
 # Basic conversion (no CSS)
@@ -89,14 +71,15 @@ The CSS styling will apply automatically when the page is saved, giving you:
 
 ---
 
-## Testing Your Own Content
+## Creating Your Own Documentation
 
 Use `comprehensive-example.md` as a template:
 
-1. Copy sections you need
-2. Replace with your content
+1. Copy sections you need from the comprehensive example
+2. Replace with your actual content
 3. Run the converter with `--with-css` flag
-4. Verify output in MediaWiki
+4. Copy output to MediaWiki
+5. Verify rendering and styling
 
 ---
 

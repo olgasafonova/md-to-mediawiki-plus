@@ -1,3 +1,4 @@
+<div style="display:none;">
 <!-- Accessible Syntax Highlighting (WCAG AA compliant) -->
 <style>
 /* Code block container */
@@ -140,6 +141,7 @@ h6 {
     font-weight: 600 !important;
 }
 </style>
+</div>
 
 
 
