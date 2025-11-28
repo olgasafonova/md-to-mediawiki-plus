@@ -12,14 +12,14 @@ type Config struct {
 	Concurrent bool // Use concurrent processing for large files
 }
 
-// Tieto brand colors
+// Tieto brand colors - all headings use Hero Blue
 var headingColors = map[int]string{
-	1: "#021e57", // Hero Blue
-	2: "#021e57", // Dark Navy Blue
-	3: "#021e57", // Dark Navy Blue
-	4: "#021e57", // Dark Navy Blue
-	5: "#021e57", // Dark Navy Blue
-	6: "#021e57", // Dark Navy Blue
+	1: "#021e57",
+	2: "#021e57",
+	3: "#021e57",
+	4: "#021e57",
+	5: "#021e57",
+	6: "#021e57",
 }
 
 // GetCodeStylingCSS generates MediaWiki CSS for accessible syntax highlighting
