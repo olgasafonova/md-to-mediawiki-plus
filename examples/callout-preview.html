@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pill-Style Callouts Preview</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #ffffff;
+        }
+        h1 {
+            color: #021e57;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #021e57;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        .callout {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 20px;
+            border-radius: 12px;
+            margin: 10px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .callout-icon {
+            font-size: 20px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        .callout-label {
+            font-weight: 600;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        .callout-text {
+            color: #333;
+            flex-grow: 1;
+        }
+
+        /* Info Callout */
+        .callout-info {
+            background: linear-gradient(135deg, #f7f7fa 0%, #e8e8f0 100%);
+            border: 1px solid #021e57;
+        }
+        .callout-info .callout-label {
+            color: #021e57;
+        }
+
+        /* Warning Callout */
+        .callout-warning {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffe8b3 100%);
+            border: 1px solid #f5a623;
+        }
+        .callout-warning .callout-label {
+            color: #c87100;
+        }
+
+        /* Success Callout */
+        .callout-success {
+            background: linear-gradient(135deg, #f0f7f4 0%, #d4edda 100%);
+            border: 1px solid #2e7d32;
+        }
+        .callout-success .callout-label {
+            color: #1b5e20; /* WCAG AA compliant: 8.59:1 contrast ratio */
+        }
+
+        /* Note Callout */
+        .callout-note {
+            background: linear-gradient(135deg, #f7f7fa 0%, #e8e8f0 100%);
+            border: 1px solid #839df9;
+        }
+        .callout-note .callout-label {
+            color: #071d49;
+        }
+
+        /* Tip Callout */
+        .callout-tip {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border: 1px solid #4caf50;
+        }
+        .callout-tip .callout-label {
+            color: #2e7d32;
+        }
+
+        /* Comparison section */
+        .comparison {
+            margin-top: 40px;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+        .old-style {
+            border-left: 4px solid #021e57;
+            background-color: #f7f7fa;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pill-Style Callouts Preview</h1>
+
+    <h2>✨ New Pill Style</h2>
+
+    <div class="callout callout-info">
+        <span class="callout-icon">ℹ️</span>
+        <strong class="callout-label">Info:</strong>
+        <span class="callout-text">This is an informational callout with an info icon.</span>
+    </div>
+
+    <div class="callout callout-warning">
+        <span class="callout-icon">⚠️</span>
+        <strong class="callout-label">Warning:</strong>
+        <span class="callout-text">This is a warning callout. Rate limits apply to all API endpoints.</span>
+    </div>
+
+    <div class="callout callout-success">
+        <span class="callout-icon">✅</span>
+        <strong class="callout-label">Success:</strong>
+        <span class="callout-text">Document archived successfully with ID: 12345</span>
+    </div>
+
+    <div class="callout callout-note">
+        <span class="callout-icon">📝</span>
+        <strong class="callout-label">Note:</strong>
+        <span class="callout-text">This is a note callout with additional information.</span>
+    </div>
+
+    <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <strong class="callout-label">Tip:</strong>
+        <span class="callout-text">Pro tip: Use batch operations for better performance.</span>
+    </div>
+
+    <h2>🔍 Border-Radius Comparison</h2>
+    <p style="color: #666; margin-bottom: 20px;">Same Success callout with different border-radius values:</p>
+
+    <h3 style="color: #666; font-size: 14px; margin-top: 20px;">10px - Subtle & Professional</h3>
+    <div class="callout callout-success" style="border-radius: 10px;">
+        <span class="callout-icon">✅</span>
+        <strong class="callout-label">Success:</strong>
+        <span class="callout-text">Document archived successfully with ID: 12345</span>
+    </div>
+
+    <h3 style="color: #666; font-size: 14px; margin-top: 20px;">12px - Enterprise Sweet Spot (Recommended)</h3>
+    <div class="callout callout-success" style="border-radius: 12px;">
+        <span class="callout-icon">✅</span>
+        <strong class="callout-label">Success:</strong>
+        <span class="callout-text">Document archived successfully with ID: 12345</span>
+    </div>
+
+    <h3 style="color: #666; font-size: 14px; margin-top: 20px;">15px - Balanced</h3>
+    <div class="callout callout-success" style="border-radius: 15px;">
+        <span class="callout-icon">✅</span>
+        <strong class="callout-label">Success:</strong>
+        <span class="callout-text">Document archived successfully with ID: 12345</span>
+    </div>
+
+    <h3 style="color: #666; font-size: 14px; margin-top: 20px;">20px - Current (Modern & Playful)</h3>
+    <div class="callout callout-success" style="border-radius: 20px;">
+        <span class="callout-icon">✅</span>
+        <strong class="callout-label">Success:</strong>
+        <span class="callout-text">Document archived successfully with ID: 12345</span>
+    </div>
+
+    <div class="comparison">
+        <h2>📊 Comparison: Old vs New</h2>
+
+        <h3 style="color: #666; font-size: 14px; margin-top: 20px;">Old Rectangular Style:</h3>
+        <div class="old-style">
+            <strong style="color:#021e57;">ℹ️ Info:</strong> Information<br>
+            This is an informational callout with an info icon.
+        </div>
+
+        <h3 style="color: #666; font-size: 14px; margin-top: 20px;">New Pill Style:</h3>
+        <div class="callout callout-info">
+            <span class="callout-icon">ℹ️</span>
+            <strong class="callout-label">Info:</strong>
+            <span class="callout-text">This is an informational callout with an info icon.</span>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f0f7ff; border-radius: 8px; border-left: 4px solid #021e57;">
+        <h3 style="color: #021e57; margin-top: 0;">Design Features</h3>
+        <ul style="color: #333;">
+            <li><strong>Rounded corners (20px)</strong> - Softer, more modern look</li>
+            <li><strong>Gradient backgrounds</strong> - Adds depth and visual interest</li>
+            <li><strong>Subtle shadows</strong> - Lifts callouts off the page</li>
+            <li><strong>Colored borders</strong> - Type-specific visual cues</li>
+            <li><strong>Icon + Label + Text</strong> - Clear information hierarchy</li>
+            <li><strong>Tieto branding</strong> - Uses #021e57 hero blue</li>
+        </ul>
+    </div>
+</body>
+</html>
