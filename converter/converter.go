@@ -208,6 +208,14 @@ func ConvertBoldItalic(text string) string {
 		text = strings.Replace(text, block, placeholder, 1)
 	}
 
+	// Also protect inline code tags from processing
+	inlineCodeRegex := regexp.MustCompile(`<code[^>]*>.*?</code>`)
+	inlineCodes := inlineCodeRegex.FindAllString(text, -1)
+	for i, code := range inlineCodes {
+		placeholder := fmt.Sprintf("XYZINLINECODEREPLACEMENTXYZ%dXYZ", i)
+		text = strings.Replace(text, code, placeholder, 1)
+	}
+
 	// Obsidian highlights: ==text== -> <mark style="background-color:#f5ff56">text</mark>
 	highlightRegex := regexp.MustCompile(`==([^=\n]+)==`)
 	text = highlightRegex.ReplaceAllString(text, `<mark style="background-color:#f5ff56">$1</mark>`)
@@ -224,6 +232,12 @@ func ConvertBoldItalic(text string) string {
 	text = italicRegex1.ReplaceAllString(text, `''$1''`)
 	italicRegex2 := regexp.MustCompile(`(?:^|[^_])_([^_\n]+?)_(?:[^_]|$)`)
 	text = italicRegex2.ReplaceAllString(text, `''$1''`)
+
+	// Restore inline code tags
+	for i, code := range inlineCodes {
+		placeholder := fmt.Sprintf("XYZINLINECODEREPLACEMENTXYZ%dXYZ", i)
+		text = strings.Replace(text, placeholder, code, 1)
+	}
 
 	// Restore code blocks
 	for i, block := range codeBlocks {
@@ -244,38 +258,77 @@ func ConvertLinks(text string) string {
 }
 
 // ConvertCallouts converts markdown callouts to MediaWiki styled boxes
+// Supports multi-line callouts and case-insensitive matching
 func ConvertCallouts(text string) string {
-	// Info boxes - using Tieto cool palette
-	infoRegex := regexp.MustCompile(`(?m)>\s*\[!info\]\s*(.*)$`)
-	text = infoRegex.ReplaceAllString(text, `{| class="wikitable" style="border-left:4px solid #021e57; background-color:#f7f7fa;"
-| <div style="padding:0.5em;">
-<strong style="color:#021e57;">ℹ️ Info:</strong> $1
-</div>
-|}`)
+	// Define callout types with their styling
+	calloutStyles := map[string]struct {
+		emoji       string
+		label       string
+		borderColor string
+		bgColor     string
+		textColor   string
+	}{
+		"note":      {"📝", "Note", "#839df9", "#f7f7fa", "#071d49"},
+		"info":      {"ℹ️", "Info", "#021e57", "#f7f7fa", "#021e57"},
+		"tip":       {"💡", "Tip", "#4e60e7", "#f7f7fa", "#071d49"},
+		"warning":   {"⚠️", "Warning", "#e6a700", "#fff8e6", "#8a6500"},
+		"caution":   {"🔶", "Caution", "#e65c00", "#fff0e6", "#8a3800"},
+		"important": {"❗", "Important", "#d63384", "#fdf2f8", "#9d174d"},
+		"success":   {"✅", "Success", "#4e60e7", "#f7f7fa", "#071d49"},
+	}
 
-	// Warning boxes - using Tieto warm palette with dark text for contrast
-	warningRegex := regexp.MustCompile(`(?m)>\s*\[!warning\]\s*(.*)$`)
-	text = warningRegex.ReplaceAllString(text, `{| class="wikitable" style="border-left:4px solid #f5a623; background-color:#fff8e1;"
-| <div style="padding:0.5em;">
-<strong style="color:#c87100;">⚠️ Warning:</strong> $1
-</div>
-|}`)
+	// Process each callout type
+	for calloutType, style := range calloutStyles {
+		// Multi-line callout regex: matches > [!TYPE] followed by content lines starting with >
+		// (?i) for case-insensitive, (?m) for multi-line mode
+		pattern := fmt.Sprintf(`(?im)^>\s*\[!%s\]\s*\n?((?:>.*\n?)+)`, calloutType)
+		calloutRegex := regexp.MustCompile(pattern)
 
-	// Success boxes
-	successRegex := regexp.MustCompile(`(?m)>\s*\[!success\]\s*(.*)$`)
-	text = successRegex.ReplaceAllString(text, `{| class="wikitable" style="border-left:4px solid #4e60e7; background-color:#f7f7fa;"
-| <div style="padding:0.5em;">
-<strong style="color:#4e60e7;">✓ Success:</strong> $1
-</div>
-|}`)
+		text = calloutRegex.ReplaceAllStringFunc(text, func(match string) string {
+			// Extract the content lines (everything after the [!TYPE] line)
+			contentRegex := regexp.MustCompile(`(?im)^>\s*\[!` + calloutType + `\]\s*\n?((?:>.*\n?)+)`)
+			submatch := contentRegex.FindStringSubmatch(match)
+			if len(submatch) < 2 {
+				return match
+			}
 
-	// Note boxes
-	noteRegex := regexp.MustCompile(`(?m)>\s*\[!note\]\s*(.*)$`)
-	text = noteRegex.ReplaceAllString(text, `{| class="wikitable" style="border-left:4px solid #839df9; background-color:#f7f7fa;"
+			// Clean up the content: remove leading > and trim
+			contentLines := strings.Split(submatch[1], "\n")
+			var cleanLines []string
+			for _, line := range contentLines {
+				// Remove leading > and optional space
+				cleaned := regexp.MustCompile(`^>\s?`).ReplaceAllString(line, "")
+				if strings.TrimSpace(cleaned) != "" || len(cleanLines) > 0 {
+					cleanLines = append(cleanLines, cleaned)
+				}
+			}
+			content := strings.TrimSpace(strings.Join(cleanLines, "<br/>"))
+
+			// Generate MediaWiki styled box
+			return fmt.Sprintf(`{| class="wikitable" style="border-left:4px solid %s; background-color:%s; width:100%%;"
 | <div style="padding:0.5em;">
-<strong style="color:#071d49;">📝 Note:</strong> $1
+<strong style="color:%s;">%s %s:</strong><br/>%s
 </div>
-|}`)
+|}`, style.borderColor, style.bgColor, style.textColor, style.emoji, style.label, content)
+		})
+
+		// Also handle single-line callouts (content on same line as [!TYPE])
+		singleLinePattern := fmt.Sprintf(`(?im)^>\s*\[!%s\]\s+(.+)$`, calloutType)
+		singleLineRegex := regexp.MustCompile(singleLinePattern)
+		text = singleLineRegex.ReplaceAllStringFunc(text, func(match string) string {
+			submatch := singleLineRegex.FindStringSubmatch(match)
+			if len(submatch) < 2 {
+				return match
+			}
+			content := strings.TrimSpace(submatch[1])
+
+			return fmt.Sprintf(`{| class="wikitable" style="border-left:4px solid %s; background-color:%s; width:100%%;"
+| <div style="padding:0.5em;">
+<strong style="color:%s;">%s %s:</strong> %s
+</div>
+|}`, style.borderColor, style.bgColor, style.textColor, style.emoji, style.label, content)
+		})
+	}
 
 	// Tip boxes
 	tipRegex := regexp.MustCompile(`(?m)>\s*\[!tip\]\s*(.*)$`)

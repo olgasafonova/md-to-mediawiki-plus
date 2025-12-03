@@ -57,6 +57,42 @@ Copy the contents of `output.txt` and paste into your MediaWiki editor.
 | `-v, --version` | Show version |
 | `-h, --help` | Show help |
 
+## Best Practices
+
+### Preventing Underscore Italics in Code
+
+When you have code/constants with underscores (like `KOBO_MELDINGSDIALOG`), wrap them in backticks to prevent MediaWiki from interpreting underscores as italic markers:
+
+✅ Good: `KOBO_MELDINGSDIALOG_VEDLEGG`
+❌ Bad: KOBO_MELDINGSDIALOG_VEDLEGG (renders as KOBO*MELDINGSDIALOG*italicVEDLEGG)
+
+### Improving Section Spacing
+
+Add horizontal rules (`---`) between major sections to create visual breathing room in MediaWiki. This prevents sections from feeling cramped or running together.
+
+### Avoiding Nested List Issues
+
+MediaWiki struggles with nested bullets under numbered items, often creating double-bullet indentation (• •). Instead, use bold headers with manual numbering:
+
+✅ Good:
+```markdown
+**1. First Item**
+
+Description text here.
+
+**2. Second Item**
+
+Description text here.
+```
+
+❌ Bad:
+```markdown
+1. First Item
+   - Nested bullet
+   - Another nested bullet
+2. Second Item
+```
+
 ## What Gets Converted
 
 ### Headings
